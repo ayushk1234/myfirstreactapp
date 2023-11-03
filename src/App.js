@@ -1,24 +1,56 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import About from './components/About'
+import Search from './components/search/Search';
+import React from 'react';
+import Services from './components/Services';
+import Tours from './components/Tours';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import { people } from './data';
+import { BrowserRouter, Routes, Route,Link } from 'react-router-dom'
+
+import ErrorExample from './01-useState/starter/01-error-example'
 
 function App() {
+
+
+  const handleonSearchChange = (searchdata) => {
+    console.log(searchdata)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <React.Fragment>
+       <Navbar/>
+      {/* <About/>  
+      <Services/>
+      <Tours/> */} 
+      {/* <ErrorExample/> */}
+      {/* <Search onSearchChange={handleonSearchChange} /> */}
+      <BrowserRouter>
+      <header>
+      <Link to="/">#VANLIFE</Link>
+      <nav>
+        
+        <Link to="/about">About</Link>
+        <Link to="/navbar">Navbar</Link>
+          </nav>
+
       </header>
-    </div>
+       
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path='/about' element={<About />} />
+          <Route path='/navbar' element={<Navbar />} />
+
+
+        </Routes>
+
+      </BrowserRouter>
+
+
+
+    </React.Fragment>
   );
 }
 
